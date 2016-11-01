@@ -1,0 +1,49 @@
+#main{
+	position: relative;
+	padding: 0 60px 30px;
+}
+
+.content{
+	padding: 20px 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content .sinaIcon{
+	text-align: center;
+}
+
+.content .sinaIcon a:hover{
+	color: #e6162d;
+}
+
+.contentList{
+	padding: 20px 0 30px;
+    border-bottom: 1px solid #ddd;
+	overflow: hidden;
+}
+
+.contentList .readAll{
+	color:#42b983;
+	font-size:13px;
+	float: left;
+}
+
+.contentList .readNumber{
+	display: inline-block;
+	float: right;
+	font-size: 13px;
+	color: #9e9e9e;
+}
+
+.contentList .cTime{
+	margin: 20px 0;
+}
+
+.contentList .detial{
+	margin: 20px 0;
+}
+
+.contentList .cTitle{
+	margin: 20px 0;
+}

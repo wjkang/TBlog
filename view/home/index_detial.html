@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><?=title?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="keywords" content="黄尧鑫,前端教程,前端开发,html教程,nodejs,node,css,html5,js,javascript,sql">
+	<meta name="description" content="黄尧鑫的小站,个人技术分享.">
+	<link rel="stylesheet" href="/static/home/css/min/public.min.css" />
+	<link rel="stylesheet" href="/static/home/css/min/detial.min.css" />
+</head>
+<body>
+	<div id="header">
+		<a href="/" title="黄尧鑫">黄尧鑫的小站</a>
+		<ul id="nav">
+			<?allCategory.forEach(function(item){?>
+			<li>
+				<a href="/home/index/index/type/list/id/<?=item.id?>/path/<?=item.path?>" title="<?=item.name?>">
+					<?=item.name?>
+				</a>
+			</li>
+			<?})?>
+		</ul>
+	</div>
+	<div id="main">
+		<div class="sidebar">
+			<ul class="menu_detial">
+				<?leftData.forEach(function(item){?>
+					<li>
+						<a href="/home/index/detial/id/<?=item.id?>/path/<?=item.path?>" title="<?=item.name?>" <?if(item.id==markId){?>class="active"<?}?>>
+							<?=item.name?>
+						</a>
+					</li>
+					<ul class="menu_sub">
+					<?item.parents.forEach(function(vl){?>
+						<li>
+							<a href="/home/index/detial/id/<?=vl.id?>/path/<?=item.path?>" title="<?=vl.name?>" <?if(vl.id==markId){?>class="active"<?}?>>
+								<?=vl.name?>
+							</a>
+						</li>
+					<?})?>
+					</ul>
+				<?})?>
+			</ul>
+		</div>
+		<div class="content">
+			<h1 class="title">
+				<?=title?>
+			</h1>
+			<div class="contents wangEditor-container">
+				<div style="padding:0;" class="wangEditor-txt">
+					<?-content?>
+				</div>
+			</div>
+			<!-- 多说评论框 start -->
+				<div class="ds-thread" data-thread-key="<?=markId?>" data-title="<?=title?>" data-url="http://qooqle.cc<?=url?>"></div>
+			<!-- 多说评论框 end -->
+		</div>
+	</div>
+	<script type="text/javascript" src="/static/home/js/min/public.min.js"></script>
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"qooqle"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+<!-- 多说公共JS代码 end -->
+</body>
+</html>
