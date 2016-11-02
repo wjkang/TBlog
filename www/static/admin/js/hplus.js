@@ -18,13 +18,13 @@ $(document).ready(function () {
     });
 
     //固定菜单栏
-    $(function () {
+   /* $(function () {
         $('.sidebar-collapse').slimScroll({
             height: '100%',
             railOpacity: 0.9,
             alwaysVisible: false
         });
-    });
+    });*/
 
 
     // 菜单切换
@@ -56,9 +56,9 @@ $(document).ready(function () {
         }
     });
 
-    $('.full-height-scroll').slimScroll({
+    /*$('.full-height-scroll').slimScroll({
         height: '100%'
-    });
+    });*/
 
     $('#side-menu>li').click(function () {
         if ($('body').hasClass('mini-navbar')) {
