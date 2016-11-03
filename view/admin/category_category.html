@@ -60,7 +60,16 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交</button>
+                <button type="button" class="btn btn-primary" id="submitCateBtn">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="elertModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="alert alert-danger">
+               分类名称不能为空！
             </div>
         </div>
     </div>
@@ -68,5 +77,29 @@
 <script>
     $("#addCateBtn").on("click",function () {
         $("#editCategoryModal").modal('toggle');
+
+    });
+    $("#editCategoryModal").on("show.bs.modal",function(){
+
+    });
+    $("#submitCateBtn").on("click",function(){
+        var value=$("#categoryNameValue").val();
+        if(value==""){
+            $("#elertModal").modal("show");
+            return false;
+        }
+        $.ajax({
+            type : 'POST',
+            url : '/admin/category/addCategory',
+            data : {
+                name : value
+            },
+            success : function(data) {
+                $("#categoryNameValue").val("");
+                $("#editCategoryModal").modal("hide");
+
+            }
+        });
+
     });
 </script>
