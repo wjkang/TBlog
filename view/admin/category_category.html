@@ -41,12 +41,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="editCategoryModal" role="dialog" aria-hidden="true">
+<div class="modal fade" id="addCategoryModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">新增分类</h4>
+                <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
@@ -76,30 +76,51 @@
 </div>
 <script>
     $("#addCateBtn").on("click",function () {
-        $("#editCategoryModal").modal('toggle');
+        $("#myModalLabel").html("新增分类");
+        $("#addCategoryModal").modal('toggle');
 
     });
-    $("#editCategoryModal").on("show.bs.modal",function(){
+    $("#addCategoryModal").on("show.bs.modal",function(){
 
     });
     $("#submitCateBtn").on("click",function(){
         var value=$("#categoryNameValue").val();
+        var id=$("#categoryNameValue").attr("data-id");
         if(value==""){
             $("#elertModal").modal("show");
             return false;
         }
+        var data={name:value,id:id};
+        var url=id?'/admin/category/editCategory':'/admin/category/addCategory'
         $.ajax({
             type : 'POST',
-            url : '/admin/category/addCategory',
-            data : {
-                name : value
-            },
+            url : url,
+            data : data,
             success : function(data) {
                 $("#categoryNameValue").val("");
-                $("#editCategoryModal").modal("hide");
+                $("#addCategoryModal").modal("hide");
 
             }
         });
 
+    });
+    $("[id^='editCateBtn_']").on("click",function(){
+        $("#myModalLabel").html("编辑分类");
+        var id=$(this).attr("data-id");
+        var name=$(this).attr("data-name");
+        $("#addCategoryModal").modal('toggle');
+        $("#categoryNameValue").val(name);
+        $("#categoryNameValue").attr("data-id",id);
+    });
+    $("[id^='delCateBtn_']").on("click",function(){
+        var id=$(this).attr("data-id");
+        $.ajax({
+            type : 'POST',
+            url : '/admin/category/delCategory',
+            data : {id:id},
+            success : function(data) {
+                $.pjax.reload("#content-main");
+            }
+        });
     });
 </script>
