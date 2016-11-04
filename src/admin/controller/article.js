@@ -6,7 +6,7 @@ import moment from 'moment';
 export default class extends Base {
     async articlelistAction(){
         let model=this.model("t_article");
-        let articles=await model.filed("Id,Title,UpdatedDate").select();
+        let articles=await model.field("Id,Title,UpdatedDate").select();
         this.assign({
             articles:articles
         });
@@ -15,7 +15,12 @@ export default class extends Base {
     }
 
     async addarticleAction(){
-
-        return this.display();
+        let article={
+           Id:0,
+           Title:"",
+           MarkDown:""
+        };
+        this.assign(article);
+        return this.display("editarticle");
     }
 }

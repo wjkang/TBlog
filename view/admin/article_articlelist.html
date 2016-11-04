@@ -1,0 +1,42 @@
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <a class="btn btn-default btn-primary" href="/admin/article/addArticle">新增文章</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    序号
+                </th>
+                <th>
+                    标题
+                </th>
+                <th>
+                    更新时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <?articles.forEach(function(item){?>
+            <tr>
+                <td>
+                    <?=item.Id?>
+                </td>
+                <td>
+                    <?=item.Title?>
+                </td>
+                <td>
+                    <?=formatDate(item.UpdatedDate)?>
+                </td>
+                <td>
+                    <a class="btn btn-default btn-warning" href="/admin/article/addArticle?id=<?=item.Id?>">编辑</a>
+                    <button type="button" class="btn btn-default btn-danger" data-id="<?=item.Id?>" id="delCateBtn_<?=item.Id?>">删除</button>
+                </td>
+            </tr>
+            <?})?>
+            </tbody>
+        </table>
+    </div>
+</div>
