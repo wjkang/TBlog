@@ -25,13 +25,13 @@ export default class extends Base {
         let id=this.http.post("id");
         let model=this.model("t_category");
         let updatedDate=moment().format("YYYY-MM-DD HH:mm:ss");
-        let count= model.where({Id:id}).update({Name:name,UpdatedDate:updatedDate});
+        let count=await model.where({Id:id}).update({Name:name,UpdatedDate:updatedDate});
         return this.success(count);
     }
     async delcategoryAction() {
         let id=this.http.post("id");
-        let model=this.model("t_category");
-        let count=model.where({Id:id}).delete();
+        let model= this.model("t_category");
+        let count=await model.where({Id:id}).delete();
         return this.success(count);
     }
 }
