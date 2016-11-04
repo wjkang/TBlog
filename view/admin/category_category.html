@@ -28,7 +28,7 @@
                     <?=item.Name?>
                 </td>
                 <td>
-                    <?=item.UpdatedDate?>
+                    <?=formatDate(item.UpdatedDate)?>
                 </td>
                 <td>
                     <button type="button" class="btn btn-default btn-warning" data-id="<?=item.Id?>" data-name="<?=item.Name?>" id="editCateBtn_<?=item.Id?>">编辑</button>

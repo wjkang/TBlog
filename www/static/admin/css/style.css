@@ -3542,6 +3542,9 @@ ol.unstyled {
     padding: 10px 20px;
     margin: 0 -15px;
     height: 36px;
+    bottom: 0px;
+    position: fixed;
+    width: 1220px;
 }
 
 .footer.fixed_full {

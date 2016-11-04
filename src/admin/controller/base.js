@@ -3,6 +3,7 @@
 export default class extends think.controller.base {
 	* __before(){
 		 let loginSession = yield this.session("userInfo");
+		 let pjax=this.http.header("X-PJAX");
 		 //登录状态判断
 		 if( loginSession == "undefined" || loginSession == undefined ){
 			 if ( this.http.action === 'login' || this.http.action === 'judge'){
@@ -12,5 +13,6 @@ export default class extends think.controller.base {
             	return;
 			 }
         }
+		
 	}
 }
