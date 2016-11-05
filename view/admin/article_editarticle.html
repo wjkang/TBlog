@@ -5,56 +5,41 @@
             <div class="form-group">
                 <label  class="control-label" style="float: left">标题</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" />
+                    <input class="form-control" id="title" type="text" value="<?=Title?>"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="control-label" style="float: left">分类</label>
+                <div class="col-sm-10">
+                   <select class="form-control" id="category">
+                       <option value="0">--请选择--</option>
+                       <?Categories.forEach(function(item){?>
+                         <option value="<?=item.Id?>"><?=item.Name?></option>
+                       <?})?>
+                   </select>
                 </div>
             </div>
             <div class="form-group">
                 <label  class="control-label" style="float: left">内容</label>
                 <div class="col-sm-10">
                     <div id="test-editormd">
-                        <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-</textarea>
+                      <?if(Id==0){?>
+                        <?=MarkDown?>
+                      <?}else{?>
+                        <textarea style="display: none"><?=MarkDown?>
+                        </textarea>
+                      <?}?>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">提交</button>
+                    <button type="button" class="btn btn-default" id="saveArticleBtn">提交</button>
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" id="id" value="<?=Id?>">
 </div>
 <script>
     var testEditor;
@@ -102,4 +87,27 @@
                     //this.resize("100%", 640);
                 }
             });
+
+    $("#saveArticleBtn").on("click",function(){
+        var id=$("#id").val();
+        var title=$("#title").val();
+        var category=$("#category").val();
+        var content=testEditor.getHTML();
+        var markdown=testEditor.getMarkdown();
+        console.log(content);
+        $.ajax({
+            type : 'POST',
+            url : '/admin/article/saveArticle',
+            data : {
+                id:id,
+                title:title,
+                category:category,
+                content:content,
+                markdown:markdown
+            },
+            success : function(data) {
+
+            }
+        });
+    });
 </script>
