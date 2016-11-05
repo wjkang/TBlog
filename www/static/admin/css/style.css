@@ -3329,7 +3329,6 @@ body {
 
 body.full-height-layout #wrapper,
 body.full-height-layout #page-wrapper {
-    height: 100%;
 }
 
 #page-wrapper {
@@ -3544,7 +3543,8 @@ ol.unstyled {
     height: 36px;
     bottom: 0px;
     position: fixed;
-    width: 1220px;
+    width: 83%;
+    z-index: 999;
 }
 
 .footer.fixed_full {
@@ -3702,6 +3702,7 @@ nav.page-tabs .page-tabs-content {
     height: calc(100% - 80px);
     overflow: hidden;
     padding-top: 20px;
+    padding-bottom: 60px;
 }
 
 .fixed-nav #content-main {
