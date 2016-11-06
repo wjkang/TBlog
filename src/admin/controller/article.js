@@ -22,7 +22,8 @@ export default class extends Base {
            Title:"",
            MarkDown:'',
            CategoryId:0,
-           Categories:categories
+           Categories:categories,
+           Tags:[]
         };
         this.assign(article);
         return this.display("editarticle");
@@ -31,15 +32,19 @@ export default class extends Base {
         let id=this.http.get("id");
         let cateModel=this.model("t_category");
         let articleModel=this.model("t_article");
+        let tagsModel=this.model("t_tags");
         let articel=await articleModel.where({Id:id}).find();
         let categories=await cateModel.field("Id,Name").select();
+        let tags=await tagsModel.field("Name").where("ID IN(SELECT TAGID FROM t_aticletagrelate WHERE ArticleId="+id+")").select();
         let article={
             Id:articel.Id,
             Title:articel.Title,
             MarkDown:articel.MarkDown,
             CategoryId:articel.CategoryId,
-            Categories:categories
+            Categories:categories,
+            Tags:JSON.parse(JSON.stringify(tags)).map(x=>x.Name)
         };
+        console.log(JSON.parse(JSON.stringify(tags)));
         this.assign(article);
         return this.display();
     }
@@ -49,6 +54,9 @@ export default class extends Base {
        let category=this.http.post("category");
        let content=this.http.post("content");
        let markdown=this.http.post("markdown");
+       let tags=this.http.post("tags");
+       let tagArray= tags.split(",");
+
        let date=moment().format("YYYY-MM-DD HH:mm:ss");
        let model=this.model("t_article");
        if(id==0){
