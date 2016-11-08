@@ -1,0 +1,7 @@
+ALTER TABLE `blog`.`t_aticletagrelate` 
+CHANGE COLUMN `Id` `Id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'дзбК' ;
+
+
+ALTER TABLE `blog`.`t_tags` 
+CHANGE COLUMN `Id` `Id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'дзбК' ;
+
