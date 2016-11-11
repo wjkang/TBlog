@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title><?=article.Title?></title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>呜呜呜~~~</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/home/css/blog.css">
-    <script src="static/home/js/jquery.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/home/css/blog.css">
+    <script src="/static/home/js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
-<link rel='icon' href='http://files.cnblogs.com/files/jaycewu/www.ico.la_a105c3c25d40bdb80bfcbe0bdb762b0b_32X32.ico'
-      type='image/x-ico'/>
-<link rel="stylesheet" href="http://apps.bdimg.com/libs/pace/0.4.10/themes/pace-theme-flash.css">
-<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/animate.css/3.1.0/animate.min.css">
-<link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
-<link rel="stylesheet"
-      href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/style/zTreeStyle/zTreeStyle.css">
-<script src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-<script src="http://apps.bdimg.com/libs/pace/0.4.10/pace.min.js"></script>
-<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree.all-3.5.min.js"></script>
-<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree_toc.min.js"></script>
 <div class="home-template">
     <div>
         <header class="main-header shake-slow"
@@ -53,9 +44,9 @@
                                     <a href="/">首页</a>
                                 </li>
                                 <?categories.forEach(function(item){?>
-                                    <li role="presentation">
-                                        <a href="/home/index/"><?=item.Name?></a>
-                                    </li>
+                                <li role="presentation">
+                                    <a href="/home/index/"><?=item.Name?></a>
+                                </li>
                                 <?})?>
                             </ul>
                         </div>
@@ -102,28 +93,47 @@
     <div class="row" id="main">
         <div class="col-md-8" id="mainContent">
             <div class="forFlow">
-                <?articles.forEach(function(item){?>
-                <div class="day">
-                    <div class="dayTitle">
-                        <a class="label label-success"
-                           href=""><?=formatDate1(item.UpdatedDate)?></a>
-                    </div>
-                    <div class="postTitle shake-slow">
-                        <a class="postTitle2"
-                           href=""><?=item.Title?></a>
-                    </div>
-                    <div class="postCon">
-                        <div class="c_b_p_desc"><?=delHtmlTag(item.Content).substr(0,300)?>
-                            <a href="/home/index/detail?id=<?=item.Id?>" class="c_b_p_desc_readmore btn btn-default">阅读全文</a></div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="postDesc">posted @ <?=formatDate(item.UpdatedDate)?> jaycewu</div>
-                    <div class="clear"></div>
+                <div id="post_detail">
+                    <!--done-->
+                    <div id="topics">
+                        <div class="post">
+                            <h1 class="postTitle">
+                                <a id="cb_post_title_url" class="postTitle2"
+                                   href="http://www.cnblogs.com/jaycewu/p/4694865.html">关于float和margin</a>
+                            </h1>
+                            <div class="clear"></div>
+                            <div class="postBody">
+                                <div id="cnblogs_post_body">
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        1、同级存在浮动，如mid的前面left浮动(mid不浮动)，margin则相对于父元素，mid的margin-left不是相对于left,而是相对于con（可以想象，如果left不浮动，则mid和left不在同一行，margin的参考对象自然是父元素）。但是如果margin-left的值小于left的宽度，是不起作用的(mid的宽度等于父容器宽度减去左右margin，浏览器查看元素是起作用的，ul会掉到最下面)，mid和left会紧靠在一起。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;
+                                        2、margin-left和margin-right相当于给元素定宽（不是显示定宽，比如如果元素内没有内容，宽度是0，当内容是连续数字或字母也起不到定宽的作用）。</p>
+                                    <p>&nbsp;&nbsp;&nbsp; 3、 float会使行内元素转为行内块元素，width会起作用。</p>
+                                    <p>&nbsp;&nbsp;&nbsp;
+                                        4、mid如果也加上左浮动，并且不设置宽度，margin-left和margin-right会限制mid的宽度，但是mid不会和left在同一行，尽管left右边还有足够的位子。</p>
+                                </div>
+                                <div id="MySignature"></div>
+                                <div class="clear"></div>
+                                <div id="blog_post_info_block">
+                                    <div id="BlogPostCategory"></div>
+                                    <div id="EntryTag"></div>
+                                    <div id="blog_post_info">
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div id="post_next_prev"></div>
+                                </div>
+
+
+                            </div>
+                            <div class="postDesc">posted @ <span id="post-date">2015-08-01 23:07</span> <a
+                                    href='http://www.cnblogs.com/jaycewu/'>jaycewu</a></div>
+                        </div>
+
+                    </div><!--end: topics 文章、评论容器-->
                 </div>
-                <?})?>
-                <div class="topicListFooter"></div>
-
-
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="" data-title="" data-url="http://qooqle.cc"></div>
+                <!-- 多说评论框 end -->
             </div>
         </div>
 
@@ -155,5 +165,19 @@
         Copyright &copy;2016 jaycewu
     </div><!--end: footer -->
 </div><!--end: home 自定义的最大容器 -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = {short_name: "qooqle"};
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
 </body>
 </html>
