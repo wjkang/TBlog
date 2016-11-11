@@ -3,42 +3,19 @@
 import Base from './base.js';
 
 export default class extends Base {
-	* indexAction(){
-		let model   	= this.model('home_category');
-		//首页顶级分类
-		let category 	= yield model.readTopClass();
-		let cPath  		= this.http.get("type");
-		let ids 		= this.http.get("id");
-
-		switch(cPath){
-			case 'list':
-				let selectList = yield model.readChildClass(ids);
-				let title  = yield model.readId(ids);
-				this.assign({
-					'allCategory' : category,
-					'indexList': selectList,
-					'type' : 'list',
-					'title' : title.name,
-					'markId' : ids
-				});
-				this.display();
-			break;
-			default:
-				let indexList   = [];
-				for(let i = 0; i < category.length; i ++){
-					let id = category[i].id;
-					let overData = yield model.readChildClass(id);
-					indexList.push(overData);
-				}
-				this.assign({
-					'allCategory' : category,
-					'indexList' : indexList,
-					'type' : 'all',
-					'title' : 'The latest blog',
-					'markId' : ids
-				});
-				return this.display();
-		}
+	async indexAction(){
+		let categoryModel=this.model("t_category");
+		let articleModel=this.model("t_article");
+		let tagModel=this.model("t_tags");
+        let categories=await categoryModel.field(["Id","Name"]).select();
+		let articles=await articleModel.field(["Id","Title","Content","UpdatedDate"]).select();
+		let tags=await tagModel.select();
+		this.assign({
+			categories:categories,
+			articles:articles,
+			tags:tags
+		});
+		return this.display();
 	}
 
 	* detialAction(){
