@@ -102,27 +102,25 @@
     <div class="row" id="main">
         <div class="col-md-8" id="mainContent">
             <div class="forFlow">
+                <?articles.forEach(function(item){?>
                 <div class="day">
                     <div class="dayTitle">
                         <a class="label label-success"
-                           href="http://www.cnblogs.com/jaycewu/archive/2016/10/29.html">2016年10月29日</a>
+                           href=""><?=formatDate1(item.UpdatedDate)?></a>
                     </div>
                     <div class="postTitle shake-slow">
-                        <a id="homepage1_HomePageDays_DaysList_ctl00_DayList_TitleUrl_0" class="postTitle2"
-                           href="http://www.cnblogs.com/jaycewu/p/6010910.html">简要分析webpack打包后代码</a>
+                        <a class="postTitle2"
+                           href=""><?=item.Title?></a>
                     </div>
                     <div class="postCon">
-                        <div class="c_b_p_desc">摘要: 开门见山 1.打包单一模块 webpack.config.js chunk1.js
-                            打包后，main.js(webpack生成的一些注释已经去掉) 这其实就是一个立即执行函数，简化一下就是： OK,看一下自运行的匿名函数里面干了什么：
-                            整个函数里就声明了一个变量installedModules 和函<a
-                                    href="http://www.cnblogs.com/jaycewu/p/6010910.html"
-                                    class="c_b_p_desc_readmore btn btn-default">阅读全文</a></div>
+                        <div class="c_b_p_desc"><?=delHtmlTag(item.Content).substr(0,300)?>
+                            <a href="" class="c_b_p_desc_readmore btn btn-default">阅读全文</a></div>
                     </div>
                     <div class="clear"></div>
-                    <div class="postDesc">posted @ 2016-10-29 14:57 jaycewu</div>
+                    <div class="postDesc">posted @ <?=formatDate(item.UpdatedDate)?> jaycewu</div>
                     <div class="clear"></div>
                 </div>
-
+                <?})?>
                 <div class="topicListFooter"></div>
 
 
@@ -139,7 +137,6 @@
                     <script type="text/javascript">loadBlogNews();</script>
                 </div>
 
-                <div id="blog-calendar" style="display:none"></div>
                 <script type="text/javascript">loadBlogDefaultCalendar();</script>
 
                 <div id="leftcontentcontainer">
