@@ -41,12 +41,12 @@
                         </div>
                         <div class="collapse navbar-collapse" id="main-menu">
                             <ul class="menu">
-                                <li role="presentation" class="nav-current">
+                                <li role="presentation">
                                     <a href="/">首页</a>
                                 </li>
                                 <?categories.forEach(function(item){?>
-                                <li role="presentation">
-                                    <a href="/home/index/"><?=item.Name?></a>
+                                <li role="presentation" <?=(cateName==item.Name?"class=nav-current":"")?>>
+                                    <a href="/category/<?=item.Name?>.html"><?=item.Name?></a>
                                 </li>
                                 <?})?>
                             </ul>
@@ -92,15 +92,46 @@
                 <!--done-->
                 <div class="newsItem">
                     <h3 class="catListTitle">公告</h3>
-                    <div id="blog-news"></div>
-                    <script type="text/javascript">loadBlogNews();</script>
+                    <div id="blog-news">
+                        <a href="https://github.com/wjkang" target="_blank">Github</a>
+                        <br>
+                        <a href="https://wjkang.github.io/" target="_blank">GithubBlog</a>
+                        <br>
+                        <a href="https://segmentfault.com/blog/jayce" target="_blank">Segmentfault</a>
+                        <br>
+                        <a href="http://www.jianshu.com/users/1e9a94bda7fb/latest_articles" target="_blank">简书</a>
+                    </div>
                 </div>
-
-                <script type="text/javascript">loadBlogDefaultCalendar();</script>
-
                 <div id="leftcontentcontainer">
-                    <div id="blog-sidecolumn"></div>
-                    <script type="text/javascript">loadBlogSideColumn();</script>
+                    <div id="blog-sidecolumn">
+                        <div id="sidebar_toptags" class="sidebar-block">
+                            <div class="catListTag">
+                                <h3 class="catListTitle">我的标签</h3>
+                                <ul>
+                                    <?tags.forEach(function(item){?>
+                                    <li><a href="/tag/<?=item.Name?>.html"><?=item.Name?></a></li>
+                                    <?})?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="sidebar_categories">
+                            <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                                <h3 class="catListTitle">随笔档案</h3>
+
+                                <ul>
+
+                                    <li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/jaycewu/archive/2016/10.html">2016年10月 (2)</a> </li>
+
+                                    <li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/jaycewu/archive/2015/08.html">2015年8月 (3)</a> </li>
+
+                                    <li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/jaycewu/archive/2015/07.html">2015年7月 (1)</a> </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
             </div><!--end: sideBarMain -->

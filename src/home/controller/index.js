@@ -45,7 +45,8 @@ export default class extends Base {
        this.assign({
            articles:articles,
            categories:categories,
-           tags:tags
+           tags:tags,
+           cateName:cateName
        });
        return this.display();
     }
@@ -63,7 +64,8 @@ export default class extends Base {
         this.assign({
             articles:articles,
             categories:categories,
-            tags:tags
+            tags:tags,
+            tagName:tagName
         });
         return this.display();
     }

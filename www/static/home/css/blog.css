@@ -436,7 +436,7 @@ pre {
     text-decoration: none;
 }
 
-#sidebar_toptags ul li a:hover, #EntryTag a:hover, #taglist a:hover {
+#sidebar_toptags ul li a:hover,#sidebar_toptags ul li a.current, #EntryTag a:hover, #taglist a:hover {
     color: #ffffff;
     background: #e67e22;
     border: 1px solid #e67e22;
