@@ -49,4 +49,25 @@ export default class extends Base {
        });
        return this.display();
     }
+    async tagAction(){
+        let tagName=this.http.get("name");
+        let categoryModel=this.model("t_category");
+        let tagModel=this.model("t_tags");
+        let articleModel=this.model("t_article");
+        let relateModel=this.model("t_aticletagrelate");
+        let categories=await categoryModel.field(["Id","Name"]).select();
+        let tags=await tagModel.select();
+        let tagId=await tagModel.field(["Id"]).where({Name:tagName}).find();
+        let articleIds=await relateModel.field(["ArticleId"]).where({TagId:tagId.Id}).distinct("ArticleId").select();
+        let articles=await articleModel.field(["Id","Title"]).where({Id:["IN",articleIds.map(function(item){return item.ArticleId})]}).select();
+        this.assign({
+            articles:articles,
+            categories:categories,
+            tags:tags
+        });
+        return this.display();
+    }
+    async archives(){
+        return this.display();
+    }
 }

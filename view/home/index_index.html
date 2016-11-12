@@ -149,8 +149,10 @@
                             <div class="catListTag">
                                 <h3 class="catListTitle">我的标签</h3>
                                 <ul>
-                                    <li><a href="http://www.cnblogs.com/jaycewu/tag/Css/">Css</a></li><li><a href="http://www.cnblogs.com/jaycewu/tag/webpack/">webpack</a></li><li><a href="http://www.cnblogs.com/jaycewu/tag/JavaScript/">JavaScript</a></li>
-                                    <li><a href="http://www.cnblogs.com/jaycewu/tag/">...</a></li></ul>
+                                    <?tags.forEach(function(item){?>
+                                    <li><a href="/tag/<?=item.Name?>.html"><?=item.Name?></a></li>
+                                    <?})?>
+                                </ul>
                             </div>
                         </div>
                         <div id="sidebar_categories">

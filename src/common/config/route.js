@@ -8,5 +8,6 @@
  */
 export default [
     ["article/:id", "home/index/detail"],
-    ["category/:name", "home/index/category"]
+    ["category/:name", "home/index/category"],
+    ["tag/:name", "home/index/tag"]
 ];
