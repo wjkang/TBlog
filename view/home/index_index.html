@@ -6,7 +6,6 @@
     <title>呜呜呜~~~</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/home/css/blog.css">
-    <script src="static/home/js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
 <link rel='icon' href='http://files.cnblogs.com/files/jaycewu/www.ico.la_a105c3c25d40bdb80bfcbe0bdb762b0b_32X32.ico'
@@ -16,10 +15,6 @@
 <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
 <link rel="stylesheet"
       href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/style/zTreeStyle/zTreeStyle.css">
-<script src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-<script src="http://apps.bdimg.com/libs/pace/0.4.10/pace.min.js"></script>
-<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree.all-3.5.min.js"></script>
-<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree_toc.min.js"></script>
 <div class="home-template">
     <div>
         <header class="main-header shake-slow"
@@ -67,37 +62,6 @@
 </div>
 <a href="javascript:;" id="back-to-top" style="display: none;"><i
         class="glyphicon glyphicon-arrow-up"></i></a>
-<script>
-    document.title = '污污污```';
-    $(function () {
-        console.log("done");
-        var markdown = $(".cnblogs-markdown");
-        if (markdown.length > 0) {
-            $("body").css("position", "relative").append('<ul id="tree" class="ztree" style="width:200px"></ul>');
-            $('#tree').ztree_toc({
-                documment_selector: '.cnblogs-markdown',
-                is_auto_number: false,
-                is_expand_all: false,
-                ztreeStyle: {
-                    width: '350px',
-                    overflow: 'auto',
-                    position: 'fixed',
-                    'z-index': 2147483647,
-                    border: '0px none',
-                    right: '0px',
-                    bottom: '50px',
-                    'background-color': 'rgb(216, 245, 174)',
-                    opacity: 0.8,
-                    'border-radius': '10px'
-                }
-            });
-        }
-        ;
-        $(".nav-toggle-button").click(function () {
-            $("#main-menu").toggle(500);
-        })
-    });
-</script>
 <div id="home" class="container animated bounceInDown">
     <div class="row" id="main">
         <div class="col-md-8" id="mainContent">
@@ -186,5 +150,11 @@
         Copyright &copy;2016 jaycewu
     </div><!--end: footer -->
 </div><!--end: home 自定义的最大容器 -->
+<script src="static/home/js/jquery.js" type="text/javascript"></script>
+<script src="static/home/js/blog.js" type="text/javascript"></script>
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<script src="http://apps.bdimg.com/libs/pace/0.4.10/pace.min.js"></script>
+<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="http://i5ting.github.io/How-to-write-jQuery-plugin/build/js/jquery.ztree_toc.min.js"></script>
 </body>
 </html>
