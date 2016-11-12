@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?=article.Title?></title>
+    <title></title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>呜呜呜~~~</title>
@@ -70,41 +70,19 @@
     <div class="row" id="main">
         <div class="col-md-8" id="mainContent">
             <div class="forFlow">
-                <div id="post_detail">
-                    <!--done-->
-                    <div id="topics">
-                        <div class="post">
-                            <h1 class="postTitle">
-                                <a id="cb_post_title_url" class="postTitle2"
-                                   href="http://www.cnblogs.com/jaycewu/p/4694865.html">关于float和margin</a>
-                            </h1>
-                            <div class="clear"></div>
-                            <div class="postBody">
-                                <div  class="markdown-body editormd-html-preview">
-                                    <?-article.Content?>
-                                </div>
-                                <div id="MySignature"></div>
-                                <div class="clear"></div>
-                                <div id="blog_post_info_block">
-                                    <div id="BlogPostCategory"></div>
-                                    <div id="EntryTag"></div>
-                                    <div id="blog_post_info">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div id="post_next_prev"></div>
-                                </div>
-
-
+                <div id="myposts">
+                    <div class="PostList list-group-item">
+                        <?if(articles.length<1){?>
+                           没有数据
+                        <?}else{?>
+                        <?articles.forEach(function(item){?>
+                            <div class="postTitl2">
+                                <a href="/article/<?=item.Id?>.html"><?=item.Title?></a>
                             </div>
-                            <div class="postDesc">posted @ <span id="post-date">2015-08-01 23:07</span> <a
-                                    href='http://www.cnblogs.com/jaycewu/'>jaycewu</a></div>
-                        </div>
-
-                    </div><!--end: topics 文章、评论容器-->
+                        <?})?>
+                        <?}?>
+                    </div>
                 </div>
-                <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="<?=article.Id?>" data-title="<?=article.Title?>" data-url="http://jaycewu.site"></div>
-                <!-- 多说评论框 end -->
             </div>
         </div>
 
@@ -136,19 +114,5 @@
         Copyright &copy;2016 jaycewu
     </div><!--end: footer -->
 </div><!--end: home 自定义的最大容器 -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    var duoshuoQuery = {short_name: "wjk"};
-    (function () {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';
-        ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0]
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-<!-- 多说公共JS代码 end -->
 </body>
 </html>
